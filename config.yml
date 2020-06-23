@@ -1,0 +1,25 @@
+---
+###############################################
+#  Developed by: Wolfgang Azevedo
+#  E-mail: wolgang@ildt.io
+#  Github: https://github.com/wolfgang-azevedo
+#  License: GPL
+#  Version: 1.0
+###############################################
+servers:
+  logstash01:
+    ip: 127.0.0.1
+    port: 9600
+    pipelines:
+      - a10
+  logstash02:
+    ip: 127.0.0.1
+    port: 9600
+    pipelines:
+      - cisco
+  logstash03:
+    ip: 127.0.0.1
+    port: 9600
+    pipelines:
+      - cisco
+      
