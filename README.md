@@ -10,7 +10,7 @@ This script was developed to run on python3.7 or above due to f-strings.
 
 # Configuration File
 
-This scripts will check YAML configuration file config.yml to be able to iterate
+This script will check YAML configuration file config.yml to be able to iterate
 over multiples logstash servers and pipelines.
 
 You can easily configure a new logstash server and all pipelines.
@@ -53,4 +53,4 @@ This script was built using Python OOB using class and methods so in this case y
 
   $ ./logstash_pipeline_mon.py
 
-Or you can import this script on your own script.
+Or you can import this module on your own script.
