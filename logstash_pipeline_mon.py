@@ -49,18 +49,24 @@ class PipelineMon:
                         json_response = json.loads(response.text)
 
                         for in_values in json_response['pipelines'][pipelines]['plugins']['inputs']:
-                            print(f'{self.timestamp()} - {logstash_server} - {in_values["name"]} - out: {str(in_values["events"]["out"])}') 
+                            inputs = f'{self.timestamp()} - {logstash_server} - {pipelines} - {in_values["name"]} - out: {str(in_values["events"]["out"])}' 
                     
                         for out_values in json_response['pipelines'][pipelines]['plugins']['outputs']:
-                            print(f'{self.timestamp()} - {logstash_server} - {out_values["name"]} - in: {str(out_values["events"]["in"])}')
-                            print(f'{self.timestamp()} - {logstash_server} - {out_values["name"]} - out: {str(out_values["events"]["out"])}')
+                            outputs_in = f'{self.timestamp()} - {logstash_server} - {pipelines} - {out_values["name"]} - in: {str(out_values["events"]["in"])}'
+                            outputs_out = f'{self.timestamp()} - {logstash_server} - {pipelines} - {out_values["name"]} - out: {str(out_values["events"]["out"])}'
+                        
+                        yield inputs, outputs_in, outputs_out
 
                     except Exception as error:
                         print(f'[LOGSTASH_MON] No valid pipeline {self.servers[logstash_server]["pipelines"]} found on list: {error}'
                               f' of server {logstash_server}..., check YAML config file!')
-
+               
 
 if __name__ == '__main__':
 
     connect = PipelineMon(config='config.yml')
-    connect.get_logstash_data()
+
+    for values in connect.get_logstash_data():
+        print(f'{values[0]}\n'
+              f'{values[1]}\n'
+              f'{values[2]}')
