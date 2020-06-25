@@ -4,8 +4,8 @@ Python Script to Monitor Logstash Pipelines
 
 # Dependencies
 
-    - Please check requirements.txt file to install all dependencies.
-    - This script was developed to run on python3.7 or above due to f-strings.
+ - Please check requirements.txt file to install all dependencies.
+ - This script was developed to run on python3.7 or above due to f-strings.
 
 # Configuration File
 
